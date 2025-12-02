@@ -1,16 +1,17 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-kapt") // untuk Glide
+    id("com.google.devtools.ksp")
+    id("kotlin-kapt") // Re-added for Data Binding
     id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.example.test_lab_week_12"
-    compileSdk = 36
+    namespace = "com.example.test_lab_week_13"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.test_lab_week_12"
+        applicationId = "com.example.test_lab_week_13" // Corrected this line
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -36,14 +37,17 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+        languageVersion = "1.9"
     }
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0")) // Enforce Kotlin 1.9.0 versions
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
@@ -53,15 +57,13 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    kapt("com.github.bumptech.glide:compiler:4.16.0")
+    ksp("com.github.bumptech.glide:ksp:4.16.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.3")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.3")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.3")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.mockito:mockito-core:5.5.0")
     testImplementation("androidx.arch.core:core-testing:2.2.0")

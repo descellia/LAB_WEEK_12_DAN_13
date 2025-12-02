@@ -1,4 +1,4 @@
-package com.example.test_lab_week_12
+package com.example.test_lab_week_13
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,11 +34,10 @@ class DetailsActivity : AppCompatActivity() {
             getString(R.string.movie_overview, extras?.getString(EXTRA_OVERVIEW).orEmpty())
 
         val posterPath = extras?.getString(EXTRA_POSTER).orEmpty()
-        Glide.with(this@DetailsActivity)
+        Glide.with(this)
             .load("$IMAGE_URL$posterPath")
             .placeholder(R.mipmap.ic_launcher)
             .fitCenter()
             .into(poster)
-
     }
 }
