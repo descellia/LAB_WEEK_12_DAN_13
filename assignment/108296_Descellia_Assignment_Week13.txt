@@ -1,0 +1,37 @@
+LAB WEEK 13 MOBILE APPLICATION PROGRAMMING
+Nama  : Descellia Ng
+NIM	    : 00000108296
+
+1. MVVM is important because it separates the app into three clear layers: data (Model), interface (View), and logic (ViewModel). This structure makes the project easier to maintain, test, and extend. The UI no longer handles logic directly because the ViewModel manages that part, which reduces bugs and keeps the app modular.
+
+Model files (data layer):
+Movie.kt
+MovieDatabase.kt
+MovieDao.kt
+MovieService.kt
+MovieRepository.kt
+
+View files (UI layer):
+activity_main.xml
+view_movie_item.xml
+MainActivity.kt
+DetailsActivity.kt
+
+ViewModel files (logic layer):
+MovieViewModel.kt
+
+2. Data Binding is more efficient because it creates a direct connection between UI elements and ViewModel data. It removes the need for findViewById, reduces repetitive code, and updates the UI automatically whenever the data changes. This keeps Activities light, lowers the chance of errors, and improves performance since view updates are handled in a lifecycle-aware way.
+
+3. The Singleton Pattern is important because it ensures that components like the Room database or Repository only have one instance across the entire app. This prevents resource duplication, avoids database conflicts, reduces memory usage, and guarantees a consistent data source for all parts of the app.
+
+4. The Repository Pattern is important because it separates data sources from the ViewModel. The ViewModel doesn’t need to know whether data comes from an API, a database, or something else. This keeps the ViewModel clean, makes the code easier to maintain, and allows you to replace or modify data sources without affecting the UI layer.
+
+5. Besides using WorkManager, there are several other ways to refresh the database with the latest data:
+Manual refresh triggered by the user
+Fetching new data when the app starts
+Refreshing data on lifecycle callbacks like onStart() or onResume()
+Using a foreground service for continuous syncing
+Using AlarmManager for scheduled background refreshes
+
+WorkManager is preferred because it manages constraints like network availability and battery optimization, but these alternatives are also possible depending on the app's needs.
+
