@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.test_lab_week_13"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.test_lab_week_13"
@@ -73,4 +73,6 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
+
+    implementation(libs.androidx.work.runtime)
 }
