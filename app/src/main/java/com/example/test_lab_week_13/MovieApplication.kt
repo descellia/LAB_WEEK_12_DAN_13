@@ -2,11 +2,11 @@ package com.example.test_lab_week_13
 
 import android.app.Application
 import com.example.test_lab_week_13.api.MovieService
+import com.example.test_lab_week_13.database.MovieDatabase
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import kotlin.jvm.java
 
 class MovieApplication : Application() {
     lateinit var movieRepository: MovieRepository
@@ -23,6 +23,10 @@ class MovieApplication : Application() {
             .build()
 
         val movieService = retrofit.create(MovieService::class.java)
-        movieRepository = MovieRepository(movieService)
+
+        // create a MovieDatabase instance
+        val movieDatabase = MovieDatabase.getInstance(applicationContext)
+        // create a MovieRepository instance
+        movieRepository = MovieRepository(movieService, movieDatabase)
     }
 }

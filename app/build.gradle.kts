@@ -8,10 +8,10 @@ plugins {
 
 android {
     namespace = "com.example.test_lab_week_13"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.test_lab_week_13" // Corrected this line
+        applicationId = "com.example.test_lab_week_13"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -37,7 +37,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        languageVersion = "1.9"
+        // Removed explicit languageVersion to allow default from plugin
     }
 
     buildFeatures {
@@ -47,7 +47,7 @@ android {
 }
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.0")) // Enforce Kotlin 1.9.0 versions
+    // Removed kotlin-bom enforcement to allow the newer plugin to dictate the version
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
@@ -69,4 +69,8 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
 }
